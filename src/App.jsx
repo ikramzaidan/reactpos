@@ -9,6 +9,9 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [itemSelected, setItemSelected] = useState();
 
+  const [orders, setOrders] = useState([]);
+  const [orderSelected, setOrderSelected] = useState();
+
   const handleAddItem = (item) => {
     setIsModalOpen(true);
     setItemSelected(item);
@@ -16,81 +19,115 @@ function App() {
 
   const items = [
     {
-      "name": "Iced Café Malt Latte",
-      "image": "https://static.fore.coffee/product/Cafe%20Malt%20Latte%20Iced.jpg",
+      "id": 1,
+      "name": "Alopurinol tablet @10pcs",
+      "image": "./no-image.jpg",
       "variations": [
-        { "name": "Regular", "price": 33000 },
-        { "name": "Large", "price": 39000 }
+        { "id": 1, "item_id": 1, "name": "100 mg", "price": 16000 },
+        { "id": 2, "item_id": 1, "name": "300 mg", "price": 33000 }
       ]
     },
     {
-      "name": "Hot Café Malt Latte",
-      "image": "https://static.fore.coffee/product/cafe%20malt%20Latte%20Hot%20(1).jpg",
-      "price": 33000
+      "id": 2,
+      "name": "Amitriptilin tablet salut 25 mg (HCI) @10pcs",
+      "image": "./no-image.jpg",
+      "price": 16000
     },
     {
-      "name": "Iced Cappuccino",
-      "image": "https://static.fore.coffee/product/Capucino%20Iced%20(1).jpg",
+      "id": 3,
+      "name": "Paracetamol tablet @10pcs",
+      "image": "./no-image.jpg",
       "variations": [
-        { "name": "Regular", "price": 33000 },
-        { "name": "Large", "price": 39000 }
+        { "id": 3, "item_id": 3, "name": "500 mg", "price": 5000 },
+        { "id": 4, "item_id": 3, "name": "1000 mg", "price": 8000 }
       ]
     },
     {
-      "name": "Hot Cappuccino",
-      "image": "https://static.fore.coffee/product/cafe%20malt%20Latte%20Hot%20(1).jpg",
-      "price": 33000
+      "id": 4,
+      "name": "Ibuprofen tablet @10pcs",
+      "image": "./no-image.jpg",
+      "price": 12000
     },
     {
-      "name": "Double Iced Shaken Latte",
-      "image": "https://static.fore.coffee/product/Double%20Iced%20Shaken%20Latte%20(1).jpg",
+      "id": 5,
+      "name": "Amoxicillin kapsul @10pcs",
+      "image": "./no-image.jpg",
       "variations": [
-        { "name": "Regular", "price": 33000 },
-        { "name": "Large", "price": 39000 }
+        { "id": 5, "item_id": 5, "name": "250 mg", "price": 15000 },
+        { "id": 6, "item_id": 5, "name": "500 mg", "price": 27000 }
       ]
     },
     {
-      "name": "Iced Classic Latte",
-      "image": "https://static.fore.coffee/product/classiclatteiced173.jpg",
+      "id": 6,
+      "name": "Cetirizine tablet 10 mg @10pcs",
+      "image": "./no-image.jpg",
+      "price": 8000
+    },
+    {
+      "id": 7,
+      "name": "Metformin tablet @10pcs",
+      "image": "./no-image.jpg",
       "variations": [
-        { "name": "Regular", "price": 33000 },
-        { "name": "Large", "price": 39000 }
+        { "id": 7, "item_id": 7, "name": "500 mg", "price": 10000 },
+        { "id": 8, "item_id": 7, "name": "850 mg", "price": 14000 }
       ]
     },
     {
-      "name": "Iced Café Latte",
-      "image": "https://static.fore.coffee/product/Cafe%20Latte%20Iced.jpg",
+      "id": 8,
+      "name": "Omeprazole kapsul @10pcs",
+      "image": "./no-image.jpg",
+      "price": 13000
+    },
+    {
+      "id": 9,
+      "name": "Loperamide tablet @10pcs",
+      "image": "./no-image.jpg",
+      "price": 9000
+    },
+    {
+      "id": 10,
+      "name": "Ciprofloxacin tablet @10pcs",
+      "image": "./no-image.jpg",
       "variations": [
-        { "name": "Regular", "price": 33000 },
-        { "name": "Large", "price": 39000 }
+        { "id": 9, "item_id": 10, "name": "250 mg", "price": 18000 },
+        { "id": 10, "item_id": 10, "name": "500 mg", "price": 34000 }
       ]
     },
     {
-      "name": "Hot Café Latte",
-      "image": "https://static.fore.coffee/product/Cafe%20Latte%20Hot%20(1).jpg",
-      "price": 33000
+      "id": 11,
+      "name": "Amlodipine tablet @10pcs",
+      "image": "./no-image.jpg",
+      "price": 15000
     },
     {
-      "name": "Iced Salted Caramel Mocha",
-      "image": "https://static.fore.coffee/product/saltedcarameliced173.jpg",
+      "id": 12,
+      "name": "Hydrochlorothiazide tablet 25 mg @10pcs",
+      "image": "./no-image.jpg",
+      "price": 10000
+    },
+    {
+      "id": 13,
+      "name": "Clopidogrel tablet @10pcs",
+      "image": "./no-image.jpg",
       "variations": [
-        { "name": "Regular", "price": 33000 },
-        { "name": "Large", "price": 39000 }
+        { "id": 11, "item_id": 13, "name": "75 mg", "price": 25000 },
+        { "id": 12, "item_id": 13, "name": "150 mg", "price": 47000 }
       ]
     },
     {
-      "name": "Hot Salted Caramel Mocha",
-      "image": "https://static.fore.coffee/product/Cafe%20Latte%20Hot%20(1).jpg",
-      "price": 33000
+      "id": 14,
+      "name": "Dexamethasone tablet @10pcs",
+      "image": "./no-image.jpg",
+      "price": 7000
     },
     {
-      "name": "Hot Espresso",
-      "image": "https://static.fore.coffee/product/espresso173.jpg",
-      "price": 33000
-    },
-    {
-      "name": "Nutty Oat Latte",
-      "image": "https://static.fore.coffee/product/Nutty%20Oat%20Latte%20Iced.jpg"
+      "id": 15,
+      "name": "Gabapentin kapsul @10pcs",
+      "image": "./no-image.jpg",
+      "variations": [
+        { "id": 13, "item_id": 15, "name": "100 mg", "price": 22000 },
+        { "id": 14, "item_id": 15, "name": "300 mg", "price": 42000 }
+      ]
     }
   ];
 

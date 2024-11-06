@@ -10,13 +10,23 @@ const Modal = ({data, handleClose}) => {
                         <div className="bg-green-600 rounded text-center text-sm text-white font-semibold px-3 py-2">Save</div>
                     </div>
                     <div className="flex flex-col gap-3 px-10 py-5">
+                        {data.variations && 
+                            <div className="flex flex-col gap-1 pb-3 border-b">
+                                <div className="text-sm">Variations</div>
+                                <div className="grid grid-cols-3 gap-5">
+                                    {data.variations.map((variation, index) => (
+                                        <div  key={index} className="flex justify-center hover:bg-green-600 border border-green-600 rounded text-green-600 hover:text-white font-semibold py-2 cursor-pointer">{variation.name}</div>
+                                    ))}
+                                </div>
+                            </div>
+                        }
                         <div className="flex flex-col gap-1 pb-3 border-b">
-                            <div className="text-sm">Variations</div>
-                            <textarea className="border rounded"></textarea>
+                            <div className="text-sm">Quantity</div>
+                            <input type="number" className="border border-green-600 rounded p-2" placeholder="Qty"></input>
                         </div>
                         <div className="flex flex-col gap-1 pb-3 border-b">
                             <div className="text-sm">Notes</div>
-                            <textarea className="border rounded"></textarea>
+                            <textarea className="border border-green-600 rounded p-2"></textarea>
                         </div>
                     </div>
                 </div>
