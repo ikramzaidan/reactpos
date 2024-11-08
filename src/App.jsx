@@ -133,7 +133,7 @@ function App() {
             <div className="bg-white border border-green-600 rounded-full text-green-600 px-5 py-1 cursor-pointer">All</div>
             <div className="bg-white border hover:border-green-600 rounded-full hover:text-green-600 px-5 py-1 cursor-pointer">Favorites</div>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-20 md:mb-0">
             {items.map((item, index) => (
               <ItemCard data={item} key={index} handleClick={() => handleAddItem(item)} />
             ))}
