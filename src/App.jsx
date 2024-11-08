@@ -140,8 +140,8 @@ function App() {
           </div>
         </div>
 
-        <div className={`${isOrderBarOpen ? 'hidden' : ''} fixed flex md:hidden w-full bg-white border-t z-10 bottom-0 p-3`} onClick={() => setIsOrderBarOpen(true)}>
-          <div className="flex justify-between items-center w-full bg-green-600 rounded px-3 py-2">
+        <div className={`${isOrderBarOpen || isSidebarOpen ? 'hidden' : ''} fixed flex md:hidden w-full bg-white border-t z-10 bottom-0 p-5`} onClick={() => setIsOrderBarOpen(true)}>
+          <div className="flex justify-between items-center w-full bg-green-600 rounded p-3">
             <div className="text-white font-semibold">{orders.length} Item</div>
             <div className="text-white font-semibold">
               Rp{" "}
@@ -157,7 +157,7 @@ function App() {
 
         <div className={`${isOrderBarOpen ? 'flex' : 'hidden md:flex'} flex-col md:basis-1/3 w-full max-h-screen gap-5 bg-white border-l`}>
           {/* Customer */}
-          <div className="flex items-center gap-3 bg-slate-100 border-b shadow px-5 py-3">
+          <div className="flex items-center gap-3 bg-slate-100 border-b shadow p-5 md:px-5 md:py-3">
             <div className="flex items-center gap-3 w-full">
               <div className="" onClick={() => setIsOrderBarOpen(false)}><FaChevronLeft /></div>
               Customer Name
@@ -192,7 +192,7 @@ function App() {
           )}
 
           {/* Total */}
-          <div className="flex flex-col gap-3 bg-slate-100 border-t px-5 py-3">
+          <div className="flex flex-col gap-3 bg-slate-100 border-t p-5 md:px-5 md:py-3">
             <div className="flex flex-row border-b">
               <div className="flex flex-col basis-4/6 mb-3">
                 <div className="text-sm font-semibold">Total</div>

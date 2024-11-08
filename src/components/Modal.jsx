@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 
 const Modal = ({data, setOrders, setVisible, visible}) => {
-    const [newOrder, setNewOrder] = useState({});
+    const [newOrder, setNewOrder] = useState({
+        id: Date.now(),
+        item_id: data.id,
+        item_quantity: 1,
+        item_notes: '',
+    });
 
     useEffect(() => {
         setNewOrder((prevOrder) => ({
             ...prevOrder,
             id: Date.now(),
             item_id: data.id,
-            item_quantity: 1
+            item_quantity: 1,
+            item_notes: "",
         }));
     }, [data]);
 
@@ -28,7 +34,6 @@ const Modal = ({data, setOrders, setVisible, visible}) => {
 
     const handleCloseModal = () => {
         setVisible(false);
-        setNewOrder({});
     }
 
     return(
@@ -62,7 +67,7 @@ const Modal = ({data, setOrders, setVisible, visible}) => {
                         </div>
                         <div className="flex flex-col gap-1 pb-3 border-b">
                             <div className="text-sm">Notes</div>
-                            <textarea name="item_notes" className="border border-green-600 rounded px-3 py-2 resize-none" onChange={handleChangeItem()} value={newOrder.item_notes || ""} placeholder="Add Notes"></textarea>
+                            <textarea name="item_notes" className="border border-green-600 rounded px-3 py-2 resize-none" onChange={handleChangeItem()} value={newOrder.item_notes} placeholder="Add Notes"></textarea>
                         </div>
                     </div>
                 </div>
